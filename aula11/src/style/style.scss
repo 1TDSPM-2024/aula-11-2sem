@@ -109,7 +109,24 @@ table{
     box-shadow: 0px 5px 15px $box-shadow-color;
 }
 
-
 .produto-modal{
     @include produto-modal;
+}
+
+// tema light
+$app-bg-color-light: #fff;
+$app-text-color-light: #000;
+
+// tema dark
+$app-bg-color-dark: #000;
+$app-text-color-dark: #fff;
+
+.app-light {
+    background-color: $app-bg-color-light;
+    color: $app-text-color-light;
+}
+
+.app-dark {
+    background-color: lighten($app-bg-color-dark, 10%);
+    color: $app-text-color-dark;
 }

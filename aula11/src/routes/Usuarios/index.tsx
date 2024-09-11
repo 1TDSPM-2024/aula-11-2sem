@@ -1,23 +1,54 @@
+import { useEffect } from "react";
+import { useState } from "react";
+import { TipoUsuario } from "../../types";
 
 export default function Usuarios(){
 
-    fetch("https://api.github.com/users")
-    .then(response=>{
-      if(!response.ok){
-        throw new Error("Dados solicitados incorretos!");
-      }
-      return response.json()
-    })
-    .then(data=>{
-      console.log(data)
-    })
-    .catch(err=>{
-      console.log(err.message)
-    })
+  const [usuarios, setUsuarios] = useState<TipoUsuario[]>([{
+    id: 0,
+    login: "",
+    avatar_url: "",
+    url: ""
+  }])
 
-    return(
-      <div>
-        <h1>Bem Vindos Usuários</h1>
-      </div>
-    );
-  }
+  // ASYNC E AWAIT
+  useEffect(() => {
+
+    async function usersGit() {
+
+      try {
+        const response = await fetch("https://api.github.com/users")
+        
+        if(!response.ok){
+          throw new Error("Dados solicitados incorretos!");
+        }
+        
+        const data = await response.json()
+        setUsuarios(data);
+      
+      } catch (err) {
+        console.log(err)
+      }
+
+    }
+
+    usersGit()
+
+  }, [])
+
+  return(
+    <div>
+      <h1>Bem Vindos Usuários</h1>
+
+      <ul>
+        {usuarios.map((u)=>(
+          <li key={u.id}>
+            {u.login} - <img style={{width:"2%",cursor:"pointer"}} src={u.avatar_url} alt={u.login}/>
+          </li>
+        ))}
+      </ul>
+    
+    </div>
+  );
+
+}
