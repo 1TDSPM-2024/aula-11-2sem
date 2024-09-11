@@ -12,12 +12,12 @@ export default function Cabecalho(){
     }
 
     return(
-        <div className={'app ${tema}'}>
-            <header className="app-header">
-                <BtnDark onClick={lancadorTema} />
-                <h1>Cabeçalho</h1>
-                <Menu/>
-            </header>
+        <div className={`app ${tema}`}>
+        <header className="app-header">
+            <BtnDark onClick={lancadorTema} className="btn-cg" />
+            <h1>Cabeçalho</h1>
+            <Menu/>
+        </header>
         </div>
         
     )
