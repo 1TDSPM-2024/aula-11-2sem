@@ -113,3 +113,18 @@ table{
 .produto-modal{
     @include produto-modal;
 }
+
+$app-bg-color-light: white;
+$app-text-color-light: black;
+
+$app-bg-color-dark: black;
+$app-text-color-dark: white;
+
+body{
+    background-color:rgb(184, 184, 184);
+    color: black;
+    &.dark{
+        background-color: $app-bg-color-dark;
+        color: $app-text-color-dark;
+    }
+}
