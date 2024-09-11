@@ -1,4 +1,32 @@
 
+$app-bg-color-light: white;
+$app-text-color-light: black;
+
+$app-bg-color-dark: black;
+$app-text-color-dark: white;
+
+body{
+    background-color: #dfdada;
+    color:#333;
+}
+
+.app{
+    &.light{
+        background-color: $app-bg-color-light;
+        color: $app-text-color-light;
+    }
+    &.dark{
+        background-color: $app-bg-color-dark;
+        color:$app-text-color-dark;
+    }
+}
+
+.app-header{
+    padding: 20px;
+    text-align: center;
+    background-color: lighten($app-bg-color-dark,10%);
+}
+
 header{
     background-color: #4CAF50;
     padding: 20px;
@@ -113,3 +141,4 @@ table{
 .produto-modal{
     @include produto-modal;
 }
+
