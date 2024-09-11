@@ -10,22 +10,44 @@ export default function Usuarios(){
     url: ""
   }]);
 
-  useEffect(()=>{
-    fetch("https://api.github.com/users")
-    .then(response=>{
-      if(!response.ok){
-        throw new Error("Dados solicitados incorretos!");
-      }
-      return response.json()
-    })
-    .then(data=>{
-      console.log(data);
-      setUsuarios(data);
-    })
-    .catch(err=>{
-      console.log(err.message)
-    })
+  //ASYNC e WAIT
+
+  useEffect(() => {
+
+    async function usersGit() { 
+      try{
+        const response = await fetch("https://api.github.com/users");
+
+
+        if (!response.ok) {
+          throw new Error("Dados solicitados incorretos!");
+        }
+        const data = await response.json();
+        setUsuarios(data);
+        
+      }catch (err) {
+        console.log(err)
+      } 
+    }
+
   }, [])
+
+  // useEffect(()=>{
+  //   fetch("https://api.github.com/users")
+  //   .then(response=>{
+  //     if(!response.ok){
+  //       throw new Error("Dados solicitados incorretos!");
+  //     }
+  //     return response.json()
+  //   })
+  //   .then(data=>{
+  //     console.log(data);
+  //     setUsuarios(data);
+  //   })
+  //   .catch(err=>{
+  //     console.log(err.message)
+  //   })
+  // }, [])
 
     return(
       <div>
