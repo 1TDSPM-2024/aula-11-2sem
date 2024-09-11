@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 
 export default function Usuarios(){
-
+  useEffect(()=>{
     fetch("https://api.github.com/users")
     .then(response=>{
       if(!response.ok){
@@ -14,6 +15,7 @@ export default function Usuarios(){
     .catch(err=>{
       console.log(err.message)
     })
+  }, [])
 
     return(
       <div>
